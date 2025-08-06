@@ -3,13 +3,22 @@ import Foundation from "@expo/vector-icons/Foundation";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { router } from "expo-router";
-import React from "react";
-import { Image, Pressable, Text, TextInput, View } from "react-native";
+import {
+  Image,
+  Platform,
+  Pressable,
+  SafeAreaView,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 
 export default function index() {
   return (
-    <View className="bg-white flex-1 text-white w-screen">
-      <View className="relative bg-[#4c1d95] pt-[48px] h-[215px] p-[24px] flex-col mb-12">
+    <SafeAreaView className="bg-[#4c1d95]">
+      <View
+        className={`relative h-[170px] px-[24px] flex-col ${Platform.OS === "android" ? "pt-[44px]" : "pt-0"}`}
+      >
         <View className="flex-row items-center justify-between mb-[32px]">
           <View className="flex-row gap-4 items-center">
             <Ionicons name="menu-sharp" size={26} color="white" />
@@ -36,7 +45,7 @@ export default function index() {
             />
           </View>
         </View>
-        <View className="absolute -bottom-[20px] w-full mx-6">
+        <View className="absolute -bottom-[20px] w-full mx-6 z-10">
           <TextInput
             className="bg-white mt-[24px] rounded-[8px] py-2 px-4 h-[50px] border-2 border-gray-400 placeholder:text-black"
             placeholder={"Search"}
@@ -44,7 +53,7 @@ export default function index() {
         </View>
       </View>
 
-      <View className="pl-6">
+      <View className="px-6 pt-10 bg-white">
         <Text className="font-semibold text-[18px]">Resume your course</Text>
         <View className="w-[300px] rounded-[20px] mt-4 overflow-hidden">
           <Image
@@ -70,7 +79,7 @@ export default function index() {
         </View>
       </View>
 
-      <View className="px-6 mt-4 flex">
+      <View className="px-6 pt-4 flex bg-white">
         <Text className=" font-bold text-[18px] mb-2">Categories</Text>
         <View className="flex-row justify-between">
           <View className="w-14 h-14 p-2 rounded-full bg-[#ede9fe]">
@@ -90,6 +99,6 @@ export default function index() {
           </View>
         </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
